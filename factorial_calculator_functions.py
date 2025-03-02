@@ -1,74 +1,58 @@
 def get_non_negative_integer() -> int:
     """
-    Prompts the user to input a non-negative integer.
+    Asks the user for a non-negative integer.
 
-    This function will repeatedly ask the user for an input until a valid 
-    non-negative integer (0 or greater) is entered. If the input is invalid,
-    an error message is displayed, and the user is asked again.
-
-    Returns:
-        int: A valid non-negative integer entered by the user.
+    Continues until a valid input (0 or greater) is entered.
     """
     while True:
         try:
-            # Prompt user to enter a non-negative integer
-            user_input = input("Enter a non-negative integer: ")
-
-            # Convert input to integer
-            num = int(user_input)
-
-            # Check if the number is non-negative
+            num = int(input("Enter a non-negative integer: "))
             if num >= 0:
                 return num
             else:
-                print("Please enter a non-negative integer.")  # Error message for negative input
+                print("Please enter a non-negative integer.")
         except ValueError:
-            # Catch ValueError when input cannot be converted to an integer
-            print("Invalid input. Please enter a valid non-negative integer.")  # Error message for non-integer input
+            print("Invalid input. Please enter a valid number.")
 
 def calculate_factorial(n: int) -> int:
     """
-    Calculates the factorial of a given non-negative integer.
-
-    The factorial of a number n is the product of all positive integers 
-    less than or equal to n. The factorial of 0 is defined as 1.
+    Calculates the factorial of a non-negative integer.
+    
+    The factorial of n is the product of all whole numbers from 1 to n.
+    For example, factorial(5) = 5 * 4 * 3 * 2 * 1 = 120. 
+    Factorial of 0 is 1.
 
     Args:
         n (int): The non-negative integer for which the factorial is calculated.
 
     Returns:
-        int: The factorial of the given number.
-    
+        int: The factorial of the input number n.
+        
     Example:
         calculate_factorial(5) -> 120
     """
-    factorial = 1  # Initialize factorial to 1 (base case for multiplication)
+    factorial = 1  # Start with 1 (since factorial of 0 is 1)
     
-    # Multiply all integers from 1 to n to calculate the factorial
+    # Loop to multiply each integer from 1 to n
     for i in range(1, n + 1):
         factorial *= i
     
-    return factorial  # Return the computed factorial
+    return factorial  # Return the calculated factorial
 
 def main():
     """
-    Main program flow: 
-    1. Gets user input for a non-negative integer.
-    2. Calculates the factorial of the integer.
-    3. Displays the result to the user.
+    Main program: gets user input, calculates the factorial, and shows the result.
     
-    This function serves as the entry point to the program and coordinates 
-    the calls to the other functions to accomplish the program's task.
+    It asks for a valid number, calculates its factorial, and prints the result.
     """
-    # Step 1: Get a valid non-negative integer from the user.
+    # Get a valid non-negative integer from the user.
     number = get_non_negative_integer()
 
-    # Step 2: Calculate the factorial of the number.
+    # Calculate the factorial of the entered number.
     result = calculate_factorial(number)
 
-    # Step 3: Display the result to the user.
+    # Display the result.
     print(f"The factorial of {number} is: {result}")
 
-# Run the program when executed directly
 if __name__ == "__main__":
     main()
